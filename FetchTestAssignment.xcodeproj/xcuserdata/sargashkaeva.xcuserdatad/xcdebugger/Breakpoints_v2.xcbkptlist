@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "142651D6-5AAF-4A3E-B3AD-F342917F0203"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB23D1E2-AD8F-4BEB-8F6E-B7B9AD5517CA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FetchTestAssignment/Core/Desserts/DessertsViewViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getDessert(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DB23D1E2-AD8F-4BEB-8F6E-B7B9AD5517CA - d86fbb7d25f0a566"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;FetchTestAssignment.Meals&gt;, Swift.Error&gt;) -&gt; () in FetchTestAssignment.DessertViewViewModel.getDessert(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "FetchTestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sargashkaeva/Desktop/FetchTestAssignment/FetchTestAssignment/Core/Desserts/DessertsViewViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "206">
+               </Location>
+               <Location
+                  uuid = "DB23D1E2-AD8F-4BEB-8F6E-B7B9AD5517CA - d92926d0437c1a48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;FetchTestAssignment.MealsResponse, Swift.Error&gt;) -&gt; () in FetchTestAssignment.DessertViewViewModel.getDessert(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "FetchTestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sargashkaeva/Desktop/FetchTestAssignment/FetchTestAssignment/Core/Desserts/DessertsViewViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "206">
+               </Location>
+               <Location
+                  uuid = "DB23D1E2-AD8F-4BEB-8F6E-B7B9AD5517CA - d92926d0437c1a48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;FetchTestAssignment.MealsResponse, Swift.Error&gt;) -&gt; () in FetchTestAssignment.DessertViewViewModel.getDessert(completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "FetchTestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sargashkaeva/Desktop/FetchTestAssignment/FetchTestAssignment/Core/Desserts/DessertsViewViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

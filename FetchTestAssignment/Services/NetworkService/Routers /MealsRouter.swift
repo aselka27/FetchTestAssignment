@@ -10,8 +10,8 @@ import Foundation
 
 enum MealsRouter: BaseRouter {
     
-case getDesserts(category: MealCategory.RawValue)
-case getMealDetails(mealID: Int)
+case getDesserts(category: MealCategory)
+case getMealDetails(mealID: String)
     
     var path: String {
         switch self {
@@ -34,9 +34,9 @@ case getMealDetails(mealID: Int)
     var queryParameter: [URLQueryItem]? {
         switch self {
         case .getDesserts(let category):
-            return [.init(name: "c", value: category)]
+            return [.init(name: "c", value: category.rawValue)]
         case .getMealDetails(let id):
-            return [.init(name: "i", value: "\(id)")]
+            return [.init(name: "i", value: id)]
         }
     }
     
