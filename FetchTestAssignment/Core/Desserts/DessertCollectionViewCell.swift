@@ -15,7 +15,7 @@ class DessertCollectionViewCell: UICollectionViewCell {
     private lazy var dessertImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "pizza")
+        //imageView.image = UIImage(named: "pizza")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -87,6 +87,10 @@ class DessertCollectionViewCell: UICollectionViewCell {
     
     func configure(with model: Meals) {
         self.dessertNameLabel.text = model.strMeal
+        guard let imageURLString = model.strMealThumb else { return }
+        if let imageURL = URL(string: imageURLString) {
+            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
+        }
     }
 }
 
