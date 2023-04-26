@@ -18,6 +18,7 @@
 		34B3651C29F9BADE00060FD7 /* MealsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3651B29F9BADE00060FD7 /* MealsRouter.swift */; };
 		34B3651F29F9BBA100060FD7 /* MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3651E29F9BBA100060FD7 /* MealCategory.swift */; };
 		34B3652129F9BD8200060FD7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3652029F9BD8200060FD7 /* NetworkService.swift */; };
+		34B3652329F9BF2500060FD7 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3652229F9BF2500060FD7 /* NetworkErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		34B3651B29F9BADE00060FD7 /* MealsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsRouter.swift; sourceTree = "<group>"; };
 		34B3651E29F9BBA100060FD7 /* MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategory.swift; sourceTree = "<group>"; };
 		34B3652029F9BD8200060FD7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		34B3652229F9BF2500060FD7 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				34B3651A29F9B81800060FD7 /* Routers  */,
 				34B3651529F9B4C600060FD7 /* NetworkComponents */,
 				34B3652029F9BD8200060FD7 /* NetworkService.swift */,
+				34B3652229F9BF2500060FD7 /* NetworkErrors.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				34B3652129F9BD8200060FD7 /* NetworkService.swift in Sources */,
 				34B3651C29F9BADE00060FD7 /* MealsRouter.swift in Sources */,
 				34B3651729F9B4E300060FD7 /* HttpMethod.swift in Sources */,
+				34B3652329F9BF2500060FD7 /* NetworkErrors.swift in Sources */,
 				34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */,
 				34B3651429F9B47100060FD7 /* BaseRouter.swift in Sources */,
 			);
