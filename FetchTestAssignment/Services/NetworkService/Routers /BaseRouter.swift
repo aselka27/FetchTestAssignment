@@ -37,6 +37,7 @@ extension BaseRouter {
         guard let url = urlComponents.url else {
             fatalError(URLError(.unsupportedURL).localizedDescription)
         }
+        print(url)
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         urlRequest.httpBody = httpBody

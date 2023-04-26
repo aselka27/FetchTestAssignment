@@ -21,10 +21,10 @@ class DessertCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var dessertName: UILabel = {
+    private lazy var dessertNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Pizza"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -57,7 +57,7 @@ class DessertCollectionViewCell: UICollectionViewCell {
     
     private func configureUI() {
         contentView.backgroundColor = .white
-        contentView.addSubview(dessertImageView, dessertName, favoriteButton)
+        contentView.addSubview(dessertImageView, dessertNameLabel, favoriteButton)
       
         setConstraints()
     }
@@ -69,17 +69,24 @@ class DessertCollectionViewCell: UICollectionViewCell {
             dessertImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             dessertImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height*0.7),
             
-            dessertName.topAnchor.constraint(equalTo: dessertImageView.bottomAnchor, constant: 8),
-            dessertName.leadingAnchor.constraint(equalTo: dessertImageView.leadingAnchor),
+            dessertNameLabel.topAnchor.constraint(equalTo: dessertImageView.bottomAnchor, constant: 8),
+            dessertNameLabel.leadingAnchor.constraint(equalTo: dessertImageView.leadingAnchor),
+            dessertNameLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -10),
             
-            favoriteButton.centerYAnchor.constraint(equalTo: dessertName.centerYAnchor),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -18)
+            favoriteButton.centerYAnchor.constraint(equalTo: dessertNameLabel.centerYAnchor),
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 20),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
    @objc private func favButtonTapped() {
         isFavorite.toggle()
+    }
+    
+    func configure(with model: Meals) {
+        self.dessertNameLabel.text = model.strMeal
     }
 }
 
