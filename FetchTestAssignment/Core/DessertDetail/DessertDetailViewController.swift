@@ -10,24 +10,69 @@ import UIKit
 class DessertDetailViewController: UIViewController {
     
     private let dessertView = DessertDetailView()
+    private let viewModel: DessertDetailViewViewModel
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false 
+        scrollView.backgroundColor = .white
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
-    override func loadView() {
-        self.view = dessertView
-        dessertView.segmentCollectionView.delegate = self
-        dessertView.segmentCollectionView.dataSource = self
+    init(viewModel: DessertDetailViewViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         let indexPath = IndexPath(row: 0, section: 0)
         dessertView.segmentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
- // meal name , instruction , ingredients/measurements
+      
+        viewModel.fetch { [weak self] in
+            DispatchQueue.main.async {
+                guard let dessertDetail = self?.viewModel.dessertDetail else { return }
+                self?.dessertView.configure(with: dessertDetail)
+                self?.dessertView.ingredientsTableView.reloadData()
+            }
+        }
+    }
+    
+    private func configureUI() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(dessertView)
+        dessertView.translatesAutoresizingMaskIntoConstraints = false
+        setupConstraints()
+        setDelegates()
+        
+    }
+    
+    private func setDelegates() {
+        dessertView.segmentCollectionView.delegate = self
+        dessertView.segmentCollectionView.dataSource = self
+        dessertView.ingredientsTableView.delegate = self
+        dessertView.ingredientsTableView.dataSource = self
+    }
+    
+    private func setupConstraints() {
+        let constraints = [
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            dessertView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            dessertView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            dessertView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            dessertView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            dessertView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 
 }
@@ -51,7 +96,29 @@ extension DessertDetailViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        self.dessertView.directionsLabel.isHidden = indexPath.item == 0 ? true : false
+        self.dessertView.ingredientsTableView.isHidden = indexPath.item == 0 ? false : true
+    }
+    
+    
+}
+
+
+extension DessertDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.ingredients.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientTableViewCell", for: indexPath) 
+        cell.accessoryType = .disclosureIndicator
+        let ingredient = viewModel.ingredients[indexPath.row]
+        cell.textLabel?.text = "\(ingredient.1) \(ingredient.0)"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
     }
     
     

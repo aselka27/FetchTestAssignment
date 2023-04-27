@@ -63,6 +63,33 @@ class DessertDetailView: UIView {
         return collectionView
     }()
     
+    let directionsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let ingredientsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var ingredientsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.showsVerticalScrollIndicator = false
+        tableView.isScrollEnabled = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.allowsSelection = false
+        tableView.isHidden = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientTableViewCell")
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -79,13 +106,13 @@ class DessertDetailView: UIView {
     
     private func configureUI() {
         backgroundColor = .white
-        addSubview(dessertImageView, dessertNameLabel, infoStackView, segmentCollectionView)
+        addSubview(dessertImageView, dessertNameLabel, infoStackView, segmentCollectionView, directionsLabel, ingredientsTableView)
         setupConstraints()
     }
     
     private func setupConstraints() {
         let constraints = [
-            dessertNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
+            dessertNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             dessertNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             dessertImageView.topAnchor.constraint(equalTo: dessertNameLabel.bottomAnchor, constant: 10),
             dessertImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -96,12 +123,20 @@ class DessertDetailView: UIView {
             segmentCollectionView.topAnchor.constraint(equalTo: dessertImageView.bottomAnchor, constant: 30),
             segmentCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             segmentCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            segmentCollectionView.heightAnchor.constraint(equalToConstant: 30)
+            segmentCollectionView.heightAnchor.constraint(equalToConstant: 30),
+            directionsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            directionsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            directionsLabel.topAnchor.constraint(equalTo: segmentCollectionView.bottomAnchor, constant: 15),
+            directionsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
+            ingredientsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            ingredientsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            ingredientsTableView.topAnchor.constraint(equalTo: segmentCollectionView.bottomAnchor, constant: 15),
+            ingredientsTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func configure(with model: MealDetail) {
+     func configure(with model: MealDetail) {
         self.categoryLabel.text = model.strCategory
         self.dessertNameLabel.text = model.strMeal
         self.dessertRegion.text = model.strArea
@@ -109,5 +144,6 @@ class DessertDetailView: UIView {
         if let imageURL = URL(string: imageURLString) {
             self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
         }
+        directionsLabel.text = model.strInstructions
     }
 }

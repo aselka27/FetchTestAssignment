@@ -27,7 +27,6 @@ class DessertsViewController: UIViewController {
     init(viewModel: DessertViewViewModelImpl) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -47,6 +46,7 @@ class DessertsViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
+        title = "Desserts \u{1F9C1}"
         view.addSubview(dessertsCollectionView)
         setupConstraints()
     }
@@ -58,7 +58,6 @@ class DessertsViewController: UIViewController {
             dessertsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dessertsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
 }
@@ -76,6 +75,12 @@ extension DessertsViewController: UICollectionViewDataSource, UICollectionViewDe
             cell.configure(with: dessert)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let dessert = viewModel.allDesserts?[indexPath.item], let dessertId = dessert.idMeal else { return }
+        let vc = DessertDetailViewController(viewModel: DessertDetailViewViewModel(id: dessertId))
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

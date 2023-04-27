@@ -38,6 +38,13 @@ extension NetworkService {
         guard let data = data else {
             return nil
         }
-        return try? JSONDecoder().decode(T.self, from: data)
+        do {
+            let decodedData = try JSONDecoder().decode(T.self, from: data)
+            return decodedData
+        } catch {
+            print("Error decoding data: \(error.localizedDescription)")
+            return nil
+        }
     }
+    
 }

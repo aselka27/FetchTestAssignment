@@ -12,6 +12,7 @@
 		34A763D629F9E58B00AB3FD4 /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */; };
 		34A763D829F9F95800AB3FD4 /* SegmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */; };
 		34A763DA29FA009D00AB3FD4 /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D929FA009D00AB3FD4 /* MealDetail.swift */; };
+		34A763DC29FA049100AB3FD4 /* DessertDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */; };
 		34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FC29F9B0F800060FD7 /* AppDelegate.swift */; };
 		34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */; };
 		34B3650129F9B0F800060FD7 /* DessertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3650029F9B0F800060FD7 /* DessertsViewController.swift */; };
@@ -37,6 +38,7 @@
 		34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 		34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		34A763D929FA009D00AB3FD4 /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
+		34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailViewViewModel.swift; sourceTree = "<group>"; };
 		34B364F929F9B0F800060FD7 /* FetchTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B364FC29F9B0F800060FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				34A763D329F9E30200AB3FD4 /* DessertDetailViewController.swift */,
 				34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */,
 				34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */,
+				34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */,
 			);
 			path = DessertDetail;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */,
 				34A763DA29FA009D00AB3FD4 /* MealDetail.swift in Sources */,
 				34B3651429F9B47100060FD7 /* BaseRouter.swift in Sources */,
+				34A763DC29FA049100AB3FD4 /* DessertDetailViewViewModel.swift in Sources */,
 				34B3652729F9C4BD00060FD7 /* DessertCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

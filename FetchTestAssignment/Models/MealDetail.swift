@@ -9,7 +9,7 @@ import Foundation
 
 
 struct MealDetailResponse: Codable {
-    let meal: [MealDetail]?
+    let meals: [MealDetail]?
 }
 
 
@@ -67,4 +67,32 @@ struct MealDetail: Codable {
     let strImageSource: String?
     let strCreativeCommonConfirmed: String?
     let dateModified: String?
+}
+
+
+extension MealDetail {
+    var ingredients: [(String?,String?)] {
+        return [
+           (strIngredient1, strMeasure1),
+           (strIngredient2, strMeasure2),
+           (strIngredient3, strMeasure3),
+            (strIngredient4, strMeasure4),
+            (strIngredient5, strMeasure5),
+            (strIngredient6, strMeasure6),
+            (strIngredient7, strMeasure7),
+            (strIngredient8, strMeasure8),
+            (strIngredient9, strMeasure9),
+            (strIngredient10, strMeasure10),
+            (strIngredient11, strMeasure11),
+            (strIngredient12, strMeasure12),
+            (strIngredient13, strMeasure13),
+            (strIngredient14, strMeasure14),
+            (strIngredient15, strMeasure15),
+            (strIngredient16, strMeasure16),
+            (strIngredient17, strMeasure17),
+            (strIngredient18, strMeasure18),
+            (strIngredient19, strMeasure19),
+            (strIngredient20, strMeasure20)
+        ]
+    }
 }

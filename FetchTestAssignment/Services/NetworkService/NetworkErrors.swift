@@ -9,5 +9,8 @@ import Foundation
 
 
 enum NetworkError: Error {
-    
+    case notFound
+    case unauthorized
+    case forbidden
+    case decodingError
 }
