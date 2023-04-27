@@ -61,6 +61,7 @@ final class IngredientTableViewCell: UITableViewCell {
         let constraints = [
             ingredientLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ingredientLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            
             checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ]

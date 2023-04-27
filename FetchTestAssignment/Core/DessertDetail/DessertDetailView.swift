@@ -59,12 +59,8 @@ final class DessertDetailView: UIView {
     }()
     
     lazy var segmentCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SegmentCollectionViewCell.self, forCellWithReuseIdentifier: SegmentCollectionViewCell.identifier)
-        collectionView.backgroundColor = UIColor(named: "backgroundColor")
         return collectionView
     }()
     

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol DessertsCollectionViewManagerImpl: AnyObject {
+protocol CollectionViewManagerImpl: AnyObject {
     func setViewModel(with viewModel: DessertViewViewModelImpl)
     func inject(collectionView: UICollectionView)
     var navigateToDessertDetail: ((String)->())? { get set }
 }
 
-final class DessertsCollectionViewManager: NSObject, DessertsCollectionViewManagerImpl {
+final class DessertsCollectionViewManager: NSObject, CollectionViewManagerImpl {
     
     //MARK: Properties
     var collectionView: UICollectionView?
@@ -60,8 +60,6 @@ final class DessertsCollectionViewManager: NSObject, DessertsCollectionViewManag
         collectionView.dataSource = self
     }
 }
-
-
 
    //MARK: UICollectionViewDataSource & UICollectionViewDelegate
 extension DessertsCollectionViewManager: UICollectionViewDataSource {

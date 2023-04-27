@@ -20,6 +20,7 @@
 		34A763EA29FACDD900AB3FD4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763E929FACDD900AB3FD4 /* CustomLabel.swift */; };
 		34A763EC29FAE78100AB3FD4 /* DessertsCollectionViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763EB29FAE78100AB3FD4 /* DessertsCollectionViewManager.swift */; };
 		34A763EE29FAF58C00AB3FD4 /* IngredientsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763ED29FAF58C00AB3FD4 /* IngredientsTableViewManager.swift */; };
+		34A763F329FAFC2800AB3FD4 /* TypesCollectionViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763F229FAFC2800AB3FD4 /* TypesCollectionViewManager.swift */; };
 		34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FC29F9B0F800060FD7 /* AppDelegate.swift */; };
 		34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */; };
 		34B3650129F9B0F800060FD7 /* DessertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3650029F9B0F800060FD7 /* DessertsViewController.swift */; };
@@ -53,6 +54,7 @@
 		34A763E929FACDD900AB3FD4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		34A763EB29FAE78100AB3FD4 /* DessertsCollectionViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsCollectionViewManager.swift; sourceTree = "<group>"; };
 		34A763ED29FAF58C00AB3FD4 /* IngredientsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewManager.swift; sourceTree = "<group>"; };
+		34A763F229FAFC2800AB3FD4 /* TypesCollectionViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesCollectionViewManager.swift; sourceTree = "<group>"; };
 		34B364F929F9B0F800060FD7 /* FetchTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B364FC29F9B0F800060FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				34A763ED29FAF58C00AB3FD4 /* IngredientsTableViewManager.swift */,
 				34A763EB29FAE78100AB3FD4 /* DessertsCollectionViewManager.swift */,
+				34A763F229FAFC2800AB3FD4 /* TypesCollectionViewManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				34A763EC29FAE78100AB3FD4 /* DessertsCollectionViewManager.swift in Sources */,
 				34B3651929F9B51E00060FD7 /* HttpHeader.swift in Sources */,
 				34B3652A29F9C51200060FD7 /* NSObject+Extension .swift in Sources */,
+				34A763F329FAFC2800AB3FD4 /* TypesCollectionViewManager.swift in Sources */,
 				34A763D629F9E58B00AB3FD4 /* DessertDetailView.swift in Sources */,
 				34A763DE29FA24C000AB3FD4 /* IngredientTableViewCell.swift in Sources */,
 				34B3653229F9D36C00060FD7 /* Meal .swift in Sources */,

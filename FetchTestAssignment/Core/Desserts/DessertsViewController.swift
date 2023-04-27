@@ -12,10 +12,10 @@ final class DessertsViewController: UIViewController {
     //MARK: Properties
     private var viewModel: DessertViewViewModelImpl
     private let dessertsView: DessertsView
-    var collectionViewManager: DessertsCollectionViewManagerImpl
+    var collectionViewManager: CollectionViewManagerImpl
    
     //MARK: Init
-    init(viewModel: DessertViewViewModelImpl, dessertsView: DessertsView, collectionViewManager: DessertsCollectionViewManagerImpl) {
+    init(viewModel: DessertViewViewModelImpl, dessertsView: DessertsView, collectionViewManager: CollectionViewManagerImpl) {
         self.viewModel = viewModel
         self.dessertsView = dessertsView
         self.collectionViewManager = collectionViewManager
@@ -60,7 +60,7 @@ final class DessertsViewController: UIViewController {
     
     private func goToDessertDetail() {
         collectionViewManager.navigateToDessertDetail = { [weak self] id in
-            let vc = DessertDetailViewController(viewModel: DessertDetailViewViewModel(id: id), dessertDetailView: DessertDetailView(), tableViewManager: IngredientTableViewManager())
+            let vc = DessertDetailViewController(viewModel: DessertDetailViewViewModel(id: id), dessertDetailView: DessertDetailView(), tableViewManager: IngredientTableViewManager(), collectionViewManager: TypesCollectionViewManager())
             self?.navigationController?.pushViewController(vc, animated: true)
         }
     }

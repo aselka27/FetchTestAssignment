@@ -13,12 +13,14 @@ final class DessertDetailViewController: UIViewController {
     private let dessertDetailView: DessertDetailView
     private let viewModel: DessertDetailViewViewModelImpl
     private let tableViewManager: IngredientTableViewManagerImpl
+    private let collectionViewManager: TypesCollectionViewManagerImpl
   
     //MARK: Init
-    init(viewModel: DessertDetailViewViewModelImpl, dessertDetailView: DessertDetailView, tableViewManager: IngredientTableViewManagerImpl) {
+    init(viewModel: DessertDetailViewViewModelImpl, dessertDetailView: DessertDetailView, tableViewManager: IngredientTableViewManagerImpl, collectionViewManager: TypesCollectionViewManagerImpl) {
         self.viewModel = viewModel
         self.dessertDetailView = dessertDetailView
         self.tableViewManager = tableViewManager
+        self.collectionViewManager = collectionViewManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,22 +37,24 @@ final class DessertDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        injectTableView()
+        injectManagers()
     }
     
     //MARK: ConfigureUI
     private func configureUI() {
-        setDelegates()
         getDessertDetail()
+        injectManagers()
     }
     
-    private func setDelegates() {
-        dessertDetailView.segmentCollectionView.delegate = self
-        dessertDetailView.segmentCollectionView.dataSource = self
-    }
-    
-    private func injectTableView() {
+
+    private func injectManagers() {
         tableViewManager.inject(tableView: dessertDetailView.ingredientsTableView)
+        collectionViewManager.inject(collectionView: dessertDetailView.segmentCollectionView)
+        
+        collectionViewManager.passIndexPath = { [weak self] selectedIndex in
+            self?.dessertDetailView.directionsLabel.isHidden = selectedIndex == 0 ? true : false
+            self?.dessertDetailView.ingredientsTableView.isHidden = selectedIndex == 0 ? false : true
+        }
     }
     
     private func getDessertDetail() {
@@ -64,30 +68,6 @@ final class DessertDetailViewController: UIViewController {
                 self?.dessertDetailView.segmentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
             }
         }
-    }
-}
-
-   //MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
-extension DessertDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Types.allCases.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentCollectionViewCell.identifier, for: indexPath) as? SegmentCollectionViewCell else { return UICollectionViewCell() }
-        let types = Types.allCases
-        cell.configure(segmentType: types[indexPath.item])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = dessertDetailView.segmentCollectionView.frame.size
-        return CGSize(width: size.width/2-4, height: size.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.dessertDetailView.directionsLabel.isHidden = indexPath.item == 0 ? true : false
-        self.dessertDetailView.ingredientsTableView.isHidden = indexPath.item == 0 ? false : true
     }
 }
 

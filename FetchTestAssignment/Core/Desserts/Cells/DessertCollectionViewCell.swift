@@ -19,7 +19,6 @@ final class DessertCollectionViewCell: UICollectionViewCell {
         }
     }
   
-    
     //MARK: Views
     private lazy var dessertImageView: UIImageView = {
         let imageView = UIImageView()

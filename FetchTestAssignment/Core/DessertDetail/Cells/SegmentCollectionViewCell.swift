@@ -52,6 +52,7 @@ final class SegmentCollectionViewCell: UICollectionViewCell {
         let constraints = [
             typeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             typeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
             undelineView.leadingAnchor.constraint(equalTo: typeLabel.leadingAnchor),
             undelineView.trailingAnchor.constraint(equalTo: typeLabel.trailingAnchor),
             undelineView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 3),

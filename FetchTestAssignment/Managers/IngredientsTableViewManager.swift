@@ -7,13 +7,12 @@
 
 import UIKit
 
-
 protocol IngredientTableViewManagerImpl: AnyObject {
     func inject(tableView: UITableView)
     func setViewModel(with viewModel: DessertDetailViewViewModelImpl)
 }
 
-class IngredientTableViewManager: NSObject, IngredientTableViewManagerImpl {
+final class IngredientTableViewManager: NSObject, IngredientTableViewManagerImpl {
     
     //MARK: Properties
     var tableView: UITableView?
@@ -54,7 +53,6 @@ class IngredientTableViewManager: NSObject, IngredientTableViewManagerImpl {
     }
     
 }
-
 
 //MARK: UITableViewDataSource & UITableViewDelegate
 extension IngredientTableViewManager: UITableViewDataSource, UITableViewDelegate {
