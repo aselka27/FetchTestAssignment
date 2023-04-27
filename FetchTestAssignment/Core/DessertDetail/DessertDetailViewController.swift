@@ -63,9 +63,7 @@ final class DessertDetailViewController: UIViewController {
                 guard let dessertDetail = self?.viewModel.dessertDetail else { return }
                 self?.dessertDetailView.configure(with: dessertDetail)
                 self?.tableViewManager.setViewModel(with: self!.viewModel)
-                
-                let indexPath = IndexPath(row: 0, section: 0)
-                self?.dessertDetailView.segmentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+              
             }
         }
     }

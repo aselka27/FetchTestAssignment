@@ -26,6 +26,7 @@ final class TypesCollectionViewManager: NSObject, TypesCollectionViewManagerImpl
     
     func inject(collectionView: UICollectionView) {
         self.collectionView = collectionView
+       configureCollectionView()
     }
     
     func configureCollectionView() {
@@ -38,6 +39,9 @@ final class TypesCollectionViewManager: NSObject, TypesCollectionViewManagerImpl
         collectionView.backgroundColor = UIColor(named: "backgroundColor")
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
     }
 }
 
@@ -64,6 +68,5 @@ extension TypesCollectionViewManager: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         passIndexPath?(indexPath.item)
-       
     }
 }
