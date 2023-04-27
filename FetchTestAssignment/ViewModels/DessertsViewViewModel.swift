@@ -15,15 +15,14 @@ protocol DessertViewViewModelImpl: AnyObject {
     var allDesserts: [Meals]? { get }
 }
 
-
 class DessertViewViewModel: DessertViewViewModelImpl {
    
+    let networkService = NetworkService.shared
     var allDesserts: [Meals]? {
         didSet {
             allDesserts?.sort { $0 < $1 }
         }
     }
-    let networkService = NetworkService.shared
     
     func getDessert(completion: @escaping emptyCompletion) {
         networkService.performFetch(urlRequest: MealsRouter.getDesserts(category: .Dessert).createURLRequest(), decodedModel: MealsResponse.self) { [weak self] result in

@@ -9,6 +9,7 @@ import UIKit
 
 class SegmentCollectionViewCell: UICollectionViewCell {
     
+    //MARK: Properties
     static let identifier = "SegmentCollectionViewCell"
     override var isSelected: Bool {
         didSet {
@@ -16,6 +17,8 @@ class SegmentCollectionViewCell: UICollectionViewCell {
             typeLabel.textColor = isSelected ? .red : .black
         }
     }
+    
+    //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -25,7 +28,8 @@ class SegmentCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let typeLabel: UILabel = {
+    //MARK: Views
+    private lazy var typeLabel: UILabel = {
         let label = UILabel()
         label.text = "Ingredients"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -33,7 +37,7 @@ class SegmentCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let undelineView: UIView = {
+    private lazy var undelineView: UIView = {
         let view = UIView()
         view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,8 +45,8 @@ class SegmentCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    //MARK: ConfigureUI
     private func configureUI() {
-       // contentView.backgroundColor = UIColor(named: "backgroundColor")
         contentView.addSubview(typeLabel, undelineView)
         setupConstraints()
     }
@@ -60,6 +64,7 @@ class SegmentCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
+    //MARK: ConfigureCell
      func configure(segmentType: String) {
         self.typeLabel.text = segmentType
     }

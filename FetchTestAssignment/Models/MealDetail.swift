@@ -12,7 +12,6 @@ struct MealDetailResponse: Codable {
     let meals: [MealDetail]?
 }
 
-
 struct MealDetail: Codable {
     let idMeal: String?
     let strMeal: String?
@@ -73,9 +72,9 @@ struct MealDetail: Codable {
 extension MealDetail {
     var ingredients: [(String?,String?)] {
         return [
-           (strIngredient1, strMeasure1),
-           (strIngredient2, strMeasure2),
-           (strIngredient3, strMeasure3),
+            (strIngredient1, strMeasure1),
+            (strIngredient2, strMeasure2),
+            (strIngredient3, strMeasure3),
             (strIngredient4, strMeasure4),
             (strIngredient5, strMeasure5),
             (strIngredient6, strMeasure6),

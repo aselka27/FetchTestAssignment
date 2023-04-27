@@ -45,6 +45,5 @@ extension BaseRouter {
             urlRequest.setValue(header.value, forHTTPHeaderField: header.field)
         })
         return urlRequest
-        
     }
 }

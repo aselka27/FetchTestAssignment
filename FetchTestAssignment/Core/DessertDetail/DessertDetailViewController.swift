@@ -9,9 +9,11 @@ import UIKit
 
 class DessertDetailViewController: UIViewController {
     
+    //MARK: Properties
     private let dessertView = DessertDetailView()
     private let viewModel: DessertDetailViewViewModel
     
+    //MARK: Views
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -20,6 +22,7 @@ class DessertDetailViewController: UIViewController {
         return scrollView
     }()
     
+    //MARK: Init
     init(viewModel: DessertDetailViewViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -28,13 +31,14 @@ class DessertDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         let indexPath = IndexPath(row: 0, section: 0)
         dessertView.segmentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-      
+        
         viewModel.fetch { [weak self] in
             DispatchQueue.main.async {
                 guard let dessertDetail = self?.viewModel.dessertDetail else { return }
@@ -44,13 +48,13 @@ class DessertDetailViewController: UIViewController {
         }
     }
     
+    //MARK: ConfigureUI
     private func configureUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(dessertView)
         dessertView.translatesAutoresizingMaskIntoConstraints = false
         setupConstraints()
         setDelegates()
-        
     }
     
     private func setDelegates() {
@@ -74,10 +78,9 @@ class DessertDetailViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-
 }
 
-
+   //MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
 extension DessertDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
@@ -87,7 +90,7 @@ extension DessertDetailViewController: UICollectionViewDataSource, UICollectionV
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentCollectionViewCell.identifier, for: indexPath) as? SegmentCollectionViewCell else { return UICollectionViewCell() }
         let types = ["Ingredients", "Directions"]
         cell.configure(segmentType: types[indexPath.item])
-        return cell 
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -99,27 +102,22 @@ extension DessertDetailViewController: UICollectionViewDataSource, UICollectionV
         self.dessertView.directionsLabel.isHidden = indexPath.item == 0 ? true : false
         self.dessertView.ingredientsTableView.isHidden = indexPath.item == 0 ? false : true
     }
-    
-    
 }
 
-
+  //MARK: UITableViewDataSource & UITableViewDelegate
 extension DessertDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.ingredients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientTableViewCell", for: indexPath) 
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: IngredientTableViewCell.identifier, for: indexPath) as? IngredientTableViewCell else { return UITableViewCell() }
         let ingredient = viewModel.ingredients[indexPath.row]
-        cell.textLabel?.text = "\(ingredient.1) \(ingredient.0)"
+        cell.configure(with: ingredient)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
-    
-    
 }

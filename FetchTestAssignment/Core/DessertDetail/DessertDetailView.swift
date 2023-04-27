@@ -10,7 +10,8 @@ import UIKit
 
 class DessertDetailView: UIView {
     
-    private let dessertImageView: UIImageView = {
+    //MARK: Views
+    private lazy var dessertImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "pizza")
@@ -18,7 +19,7 @@ class DessertDetailView: UIView {
         return imageView
     }()
     
-    private let dessertNameLabel: UILabel = {
+    private lazy var dessertNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Pressure Cooker Creme Brulee"
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -36,7 +37,7 @@ class DessertDetailView: UIView {
         return label
     }()
     
-    private let dessertRegion: UILabel = {
+    private lazy var dessertRegion: UILabel = {
         let label = UILabel()
         label.text = "Origin: Malaysian"
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -63,7 +64,7 @@ class DessertDetailView: UIView {
         return collectionView
     }()
     
-    let directionsLabel: UILabel = {
+    lazy var directionsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,24 +73,18 @@ class DessertDetailView: UIView {
         return label
     }()
     
-    let ingredientsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var ingredientsTableView: UITableView = {
-        let tableView = UITableView()
+    lazy var ingredientsTableView: SelfSizingTableView = {
+        let tableView = SelfSizingTableView()
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.allowsSelection = false
         tableView.isHidden = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientTableViewCell")
+        tableView.register(IngredientTableViewCell.self, forCellReuseIdentifier: IngredientTableViewCell.identifier)
         return tableView
     }()
     
+    //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -104,12 +99,27 @@ class DessertDetailView: UIView {
         dessertImageView.addCornerRadius(12)
     }
     
+    //MARK: ConfigureUI
     private func configureUI() {
         backgroundColor = .white
         addSubview(dessertImageView, dessertNameLabel, infoStackView, segmentCollectionView, directionsLabel, ingredientsTableView)
         setupConstraints()
     }
     
+     func configure(with model: MealDetail) {
+        self.categoryLabel.text = model.strCategory
+        self.dessertNameLabel.text = model.strMeal
+        self.dessertRegion.text = model.strArea
+        guard let imageURLString = model.strMealThumb else { return }
+        if let imageURL = URL(string: imageURLString) {
+            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
+        }
+        directionsLabel.text = model.strInstructions
+    }
+}
+
+
+extension DessertDetailView {
     private func setupConstraints() {
         let constraints = [
             dessertNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -134,16 +144,5 @@ class DessertDetailView: UIView {
             ingredientsTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-    
-     func configure(with model: MealDetail) {
-        self.categoryLabel.text = model.strCategory
-        self.dessertNameLabel.text = model.strMeal
-        self.dessertRegion.text = model.strArea
-        guard let imageURLString = model.strMealThumb else { return }
-        if let imageURL = URL(string: imageURLString) {
-            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
-        }
-        directionsLabel.text = model.strInstructions
     }
 }

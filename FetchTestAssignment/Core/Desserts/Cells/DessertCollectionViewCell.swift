@@ -9,13 +9,15 @@ import UIKit
 
 class DessertCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "CollectionViewCell"
+    //MARK: Properties
+    static let identifier = "DessertCollectionViewCell"
     private var isFavorite: Bool = false
     
+    //MARK: Views
     private lazy var dessertImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        //imageView.image = UIImage(named: "pizza")
+        imageView.image = UIImage(named: "placeholder")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -23,21 +25,21 @@ class DessertCollectionViewCell: UICollectionViewCell {
     
     private lazy var dessertNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Pizza"
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let favoriteButton: UIButton = {
+    private lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        let heartImage = UIImage(systemName: "heart")?.applyingSymbolConfiguration(.init(pointSize: 30, weight: .bold))
-        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        let heartImage = UIImage(systemName: "heart")?.withTintColor(.brown).withRenderingMode(.alwaysOriginal)
+        button.setImage(heartImage?.withTintColor(.red).withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+    //MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -48,6 +50,7 @@ class DessertCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Properties
     override func layoutSubviews() {
         super.layoutSubviews()
         dessertImageView.addCornerRadius(12)
@@ -55,13 +58,31 @@ class DessertCollectionViewCell: UICollectionViewCell {
         addShadow()
     }
     
+    //MARK: ConfigureUI
     private func configureUI() {
         contentView.backgroundColor = .white
         contentView.addSubview(dessertImageView, dessertNameLabel, favoriteButton)
-      
         setConstraints()
     }
    
+   @objc private func favButtonTapped() {
+       isFavorite.toggle()
+       let checkMarkImage = isFavorite ? UIImage(systemName: "heart.fill")?.withTintColor(.red).withRenderingMode(.alwaysOriginal) : UIImage(systemName: "heart")?.withTintColor(.red).withRenderingMode(.alwaysOriginal)
+       favoriteButton.setImage(checkMarkImage?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 18)), for: .normal)
+    }
+    
+    //MARK: ConfigureCell
+    func configure(with model: Meals) {
+        self.dessertNameLabel.text = model.strMeal
+        guard let imageURLString = model.strMealThumb else { return }
+        if let imageURL = URL(string: imageURLString) {
+            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
+        }
+    }
+}
+
+
+extension DessertCollectionViewCell {
     private func setConstraints() {
         let constraints = [
             dessertImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -81,21 +102,6 @@ class DessertCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
-   @objc private func favButtonTapped() {
-        isFavorite.toggle()
-    }
-    
-    func configure(with model: Meals) {
-        self.dessertNameLabel.text = model.strMeal
-        guard let imageURLString = model.strMealThumb else { return }
-        if let imageURL = URL(string: imageURLString) {
-            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
-        }
-    }
-}
-
-
-extension DessertCollectionViewCell {
     private func addShadow() {
            contentView.layer.masksToBounds = false
            contentView.layer.shadowColor = UIColor.black.cgColor

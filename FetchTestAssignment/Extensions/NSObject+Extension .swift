@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension NSObject {
     @objc var screenWidth: CGFloat {
         return UIScreen.main.bounds.width

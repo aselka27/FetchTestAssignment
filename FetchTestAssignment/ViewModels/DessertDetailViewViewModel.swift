@@ -11,6 +11,7 @@ import Foundation
 protocol DessertDetailViewViewModelImpl: AnyObject {
     func fetch(completion: @escaping emptyCompletion)
     var dessertDetail: MealDetail? { get }
+    var ingredients: [(String, String)] { get }
 }
 
 class DessertDetailViewViewModel: DessertDetailViewViewModelImpl {

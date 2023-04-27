@@ -46,5 +46,4 @@ extension NetworkService {
             return nil
         }
     }
-    
 }

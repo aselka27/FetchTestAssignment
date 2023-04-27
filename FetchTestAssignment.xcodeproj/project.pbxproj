@@ -13,6 +13,9 @@
 		34A763D829F9F95800AB3FD4 /* SegmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */; };
 		34A763DA29FA009D00AB3FD4 /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D929FA009D00AB3FD4 /* MealDetail.swift */; };
 		34A763DC29FA049100AB3FD4 /* DessertDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */; };
+		34A763DE29FA24C000AB3FD4 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763DD29FA24C000AB3FD4 /* IngredientTableViewCell.swift */; };
+		34A763E129FA2C3600AB3FD4 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763E029FA2C3600AB3FD4 /* SelfSizingTableView.swift */; };
+		34A763E329FA2EDE00AB3FD4 /* DessertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763E229FA2EDE00AB3FD4 /* DessertsView.swift */; };
 		34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FC29F9B0F800060FD7 /* AppDelegate.swift */; };
 		34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */; };
 		34B3650129F9B0F800060FD7 /* DessertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3650029F9B0F800060FD7 /* DessertsViewController.swift */; };
@@ -39,6 +42,9 @@
 		34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCollectionViewCell.swift; sourceTree = "<group>"; };
 		34A763D929FA009D00AB3FD4 /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
 		34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailViewViewModel.swift; sourceTree = "<group>"; };
+		34A763DD29FA24C000AB3FD4 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
+		34A763E029FA2C3600AB3FD4 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
+		34A763E229FA2EDE00AB3FD4 /* DessertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsView.swift; sourceTree = "<group>"; };
 		34B364F929F9B0F800060FD7 /* FetchTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B364FC29F9B0F800060FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,12 +80,45 @@
 		34A763D229F9E2E400AB3FD4 /* DessertDetail */ = {
 			isa = PBXGroup;
 			children = (
+				34A763E529FA31C300AB3FD4 /* Cells */,
 				34A763D329F9E30200AB3FD4 /* DessertDetailViewController.swift */,
 				34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */,
-				34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */,
-				34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */,
 			);
 			path = DessertDetail;
+			sourceTree = "<group>";
+		};
+		34A763DF29FA2C2500AB3FD4 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				34A763E029FA2C3600AB3FD4 /* SelfSizingTableView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		34A763E429FA319700AB3FD4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				34B3652F29F9D29F00060FD7 /* DessertsViewViewModel.swift */,
+				34A763DB29FA049100AB3FD4 /* DessertDetailViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		34A763E529FA31C300AB3FD4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				34A763DD29FA24C000AB3FD4 /* IngredientTableViewCell.swift */,
+				34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		34A763E629FA31D600AB3FD4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				34B3652629F9C4BD00060FD7 /* DessertCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		34B364F029F9B0F800060FD7 = {
@@ -104,10 +143,10 @@
 				34B3651029F9B40200060FD7 /* Services */,
 				34B3651D29F9BB9300060FD7 /* Models */,
 				34B3652529F9C3A000060FD7 /* Core */,
+				34A763E429FA319700AB3FD4 /* ViewModels */,
+				34A763DF29FA2C2500AB3FD4 /* Reusable */,
 				34B3652829F9C4E700060FD7 /* Extensions */,
 				34B3651229F9B41B00060FD7 /* Resources */,
-				34B364FC29F9B0F800060FD7 /* AppDelegate.swift */,
-				34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */,
 				34B3650A29F9B0FC00060FD7 /* Info.plist */,
 			);
 			path = FetchTestAssignment;
@@ -127,7 +166,6 @@
 				34B3651A29F9B81800060FD7 /* Routers  */,
 				34B3651529F9B4C600060FD7 /* NetworkComponents */,
 				34B3652029F9BD8200060FD7 /* NetworkService.swift */,
-				34B3652229F9BF2500060FD7 /* NetworkErrors.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -135,6 +173,8 @@
 		34B3651229F9B41B00060FD7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */,
+				34B364FC29F9B0F800060FD7 /* AppDelegate.swift */,
 				34B3650729F9B0FC00060FD7 /* LaunchScreen.storyboard */,
 				34B3650529F9B0FC00060FD7 /* Assets.xcassets */,
 			);
@@ -144,6 +184,7 @@
 		34B3651529F9B4C600060FD7 /* NetworkComponents */ = {
 			isa = PBXGroup;
 			children = (
+				34B3652229F9BF2500060FD7 /* NetworkErrors.swift */,
 				34B3651629F9B4E300060FD7 /* HttpMethod.swift */,
 				34B3651829F9B51E00060FD7 /* HttpHeader.swift */,
 			);
@@ -162,8 +203,8 @@
 		34B3651D29F9BB9300060FD7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				34B3651E29F9BBA100060FD7 /* MealCategory.swift */,
 				34B3653129F9D36C00060FD7 /* Meals .swift */,
+				34B3651E29F9BBA100060FD7 /* MealCategory.swift */,
 				34A763D929FA009D00AB3FD4 /* MealDetail.swift */,
 			);
 			path = Models;
@@ -172,9 +213,9 @@
 		34B3652429F9C38600060FD7 /* Desserts */ = {
 			isa = PBXGroup;
 			children = (
+				34A763E629FA31D600AB3FD4 /* Cells */,
 				34B3650029F9B0F800060FD7 /* DessertsViewController.swift */,
-				34B3652629F9C4BD00060FD7 /* DessertCollectionViewCell.swift */,
-				34B3652F29F9D29F00060FD7 /* DessertsViewViewModel.swift */,
+				34A763E229FA2EDE00AB3FD4 /* DessertsView.swift */,
 			);
 			path = Desserts;
 			sourceTree = "<group>";
@@ -182,8 +223,8 @@
 		34B3652529F9C3A000060FD7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				34A763D229F9E2E400AB3FD4 /* DessertDetail */,
 				34B3652429F9C38600060FD7 /* Desserts */,
+				34A763D229F9E2E400AB3FD4 /* DessertDetail */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -273,11 +314,14 @@
 				34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */,
 				34B3651F29F9BBA100060FD7 /* MealCategory.swift in Sources */,
 				34B3653029F9D29F00060FD7 /* DessertsViewViewModel.swift in Sources */,
+				34A763E329FA2EDE00AB3FD4 /* DessertsView.swift in Sources */,
 				34A763D429F9E30200AB3FD4 /* DessertDetailViewController.swift in Sources */,
 				34A763D829F9F95800AB3FD4 /* SegmentCollectionViewCell.swift in Sources */,
+				34A763E129FA2C3600AB3FD4 /* SelfSizingTableView.swift in Sources */,
 				34B3651929F9B51E00060FD7 /* HttpHeader.swift in Sources */,
 				34B3652A29F9C51200060FD7 /* NSObject+Extension .swift in Sources */,
 				34A763D629F9E58B00AB3FD4 /* DessertDetailView.swift in Sources */,
+				34A763DE29FA24C000AB3FD4 /* IngredientTableViewCell.swift in Sources */,
 				34B3653229F9D36C00060FD7 /* Meals .swift in Sources */,
 				34B3652129F9BD8200060FD7 /* NetworkService.swift in Sources */,
 				34B3651C29F9BADE00060FD7 /* MealsRouter.swift in Sources */,
