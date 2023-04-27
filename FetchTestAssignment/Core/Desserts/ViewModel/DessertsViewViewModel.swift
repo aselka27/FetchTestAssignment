@@ -12,13 +12,13 @@ typealias emptyCompletion = (()->())
 
 protocol DessertViewViewModelImpl: AnyObject {
     func getDessert(completion: @escaping emptyCompletion)
-    var allDesserts: [Meals]? { get }
+    var allDesserts: [Meal]? { get }
 }
 
-class DessertViewViewModel: DessertViewViewModelImpl {
+final class DessertViewViewModel: DessertViewViewModelImpl {
    
-    let networkService = NetworkService.shared
-    var allDesserts: [Meals]? {
+   private let networkService = NetworkService.shared
+    var allDesserts: [Meal]? {
         didSet {
             allDesserts?.sort { $0 < $1 }
         }

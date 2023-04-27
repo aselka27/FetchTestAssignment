@@ -8,7 +8,7 @@
 import UIKit
 
 
-class DessertsView: UIView {
+final class DessertsView: UIView {
     
     //MARK: Init
     override init(frame: CGRect) {
@@ -22,13 +22,13 @@ class DessertsView: UIView {
     
     //MARK: Views
      lazy var dessertsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 7, bottom: 60, right: 7)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.register(DessertCollectionViewCell.self, forCellWithReuseIdentifier: DessertCollectionViewCell.identifier)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        layout.sectionInset = UIEdgeInsets(top: 16, left: 7, bottom: 60, right: 7)
+//        collectionView.showsVerticalScrollIndicator = false
+         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     

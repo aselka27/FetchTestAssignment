@@ -14,12 +14,13 @@ protocol DessertDetailViewViewModelImpl: AnyObject {
     var ingredients: [(String, String)] { get }
 }
 
-class DessertDetailViewViewModel: DessertDetailViewViewModelImpl {
+final class DessertDetailViewViewModel: DessertDetailViewViewModelImpl {
     
     private let networkService = NetworkService.shared
     var dessertDetail: MealDetail?
+    private var id: String
+    
     var ingredients: [(String, String)] = []
-    var id: String
     
     init(id: String) {
         self.id = id

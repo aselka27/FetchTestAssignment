@@ -7,15 +7,18 @@
 
 import UIKit
 
-class DessertsViewController: UIViewController {
-    
+final class DessertsViewController: UIViewController {
+
     //MARK: Properties
-    private let viewModel: DessertViewViewModelImpl
-    private let dessertsView = DessertsView()
+    private var viewModel: DessertViewViewModelImpl
+    private let dessertsView: DessertsView
+    var collectionViewManager: DessertsCollectionViewManagerImpl
    
     //MARK: Init
-    init(viewModel: DessertViewViewModelImpl) {
+    init(viewModel: DessertViewViewModelImpl, dessertsView: DessertsView, collectionViewManager: DessertsCollectionViewManagerImpl) {
         self.viewModel = viewModel
+        self.dessertsView = dessertsView
+        self.collectionViewManager = collectionViewManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,50 +35,33 @@ class DessertsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        viewModel.getDessert {
-            DispatchQueue.main.async { [weak self] in
-                self?.dessertsView.dessertsCollectionView.reloadData()
-            }
-        }
+        getAllDesserts()
+        goToDessertDetail()
     }
     
     //MARK: ConfigureUI
     private func configureUI() {
         view.backgroundColor = .white
         title = "Desserts \u{1F9C1}"
-        setDelegates()
     }
     
-    private func setDelegates() {
-        dessertsView.dessertsCollectionView.delegate = self
-        dessertsView.dessertsCollectionView.dataSource = self
-    }
-}
-
-     //MARK: CollectionViewDelegate & CollectionViewDatasource
-extension DessertsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.allDesserts?.count ?? 0
+    private func injectCollectionViewManager() {
+        collectionViewManager.inject(collectionView: dessertsView.dessertsCollectionView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DessertCollectionViewCell.identifier, for: indexPath) as? DessertCollectionViewCell else {
-            return UICollectionViewCell()
+    private func getAllDesserts() {
+        viewModel.getDessert {
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionViewManager.setViewModel(with: self!.viewModel)
+                self?.injectCollectionViewManager()
+            }
         }
-        if let dessert = viewModel.allDesserts?[indexPath.item] {
-            cell.configure(with: dessert)
+    }
+    
+    private func goToDessertDetail() {
+        collectionViewManager.navigateToDessertDetail = { [weak self] id in
+            let vc = DessertDetailViewController(viewModel: DessertDetailViewViewModel(id: id), dessertDetailView: DessertDetailView(), tableViewManager: IngredientTableViewManager())
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let dessert = viewModel.allDesserts?[indexPath.item], let dessertId = dessert.idMeal else { return }
-        let vc = DessertDetailViewController(viewModel: DessertDetailViewViewModel(id: dessertId))
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = dessertsView.dessertsCollectionView.frame.size
-        return CGSize(width: (size.width/2)-16, height: 214)
     }
 }

@@ -7,61 +7,64 @@
 
 import UIKit
 
-class IngredientTableViewCell: UITableViewCell {
+final class IngredientTableViewCell: UITableViewCell {
     
     //MARK: Properties
     static let identifier = "IngredientTableViewCell"
-    private var isChecked: Bool = false
+    private var checkmarkIcon = UIImage.CheckMarkButton.unchecked
+    private let configuration = UIImage.SymbolConfiguration(pointSize: 23)
+    
+     lazy var isChecked: Bool = false {
+        didSet {
+            checkmarkIcon = isChecked ? UIImage.CheckMarkButton.checked.withConfiguration(configuration) : UIImage.CheckMarkButton.unchecked.withConfiguration(configuration)
+            checkmarkImageView.image = checkmarkIcon
+        }
+    }
 
     //MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.isChecked = false
+    }
+    
     //MARK: Views
-    private let ingredientLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let ingredientLabel: CustomLabel = {
+        let label = CustomLabel(frame: .zero, fontSize: 14, fontWeight: .medium)
         return label
     }()
 
-    private lazy var checkButton: UIButton = {
-        let button = UIButton()
-        let checkMarkImage = UIImage(systemName: "checkmark.circle")?.withTintColor(.brown).withRenderingMode(.alwaysOriginal)
-        
-        button.setImage(checkMarkImage?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 18)), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var checkmarkImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = checkmarkIcon.withConfiguration(configuration)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     //MARK: ConfigureUI
     private func configureUI() {
         contentView.backgroundColor = .white
-        contentView.addSubview(checkButton, ingredientLabel)
+        contentView.addSubview(checkmarkImageView, ingredientLabel)
         setConstraints()
-        checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
     }
     
     private func setConstraints() {
         let constraints = [
             ingredientLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             ingredientLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            checkButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            checkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            checkmarkImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            checkmarkImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ]
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    @objc private func checkButtonTapped() {
-        isChecked.toggle()
-        let checkMarkImage = isChecked ? UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.brown).withRenderingMode(.alwaysOriginal) : UIImage(systemName: "checkmark.circle")?.withTintColor(.brown).withRenderingMode(.alwaysOriginal)
-        checkButton.setImage(checkMarkImage?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 18)), for: .normal)
     }
     
     //MARK: ConfigureCell

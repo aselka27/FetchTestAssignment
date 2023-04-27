@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0E9F7C95-070E-419D-928B-887EE84FE5A9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FetchTestAssignment/Core/Desserts/DessertsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "41A546B1-4354-4E33-AC3B-D1EC87BE5DB1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -66,54 +50,6 @@
             endingLineNumber = "26"
             landmarkName = "performFetch(urlRequest:decodedModel:completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C0052B49-AF3F-4A98-BCCD-42AE0B6B7BA1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FetchTestAssignment/Core/DessertDetail/DessertDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C0052B49-AF3F-4A98-BCCD-42AE0B6B7BA1 - e74f44fc82c389c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FetchTestAssignment.DessertDetailViewController.tableView(_: __C.UITableView, numberOfRowsInSection: Swift.Int) -&gt; Swift.Int"
-                  moduleName = "FetchTestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sargashkaeva/Desktop/FetchTestAssignment/FetchTestAssignment/Core/DessertDetail/DessertDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "46">
-               </Location>
-               <Location
-                  uuid = "C0052B49-AF3F-4A98-BCCD-42AE0B6B7BA1 - e74f44fc82c38a25"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FetchTestAssignment.DessertDetailViewController.tableView(_: __C.UITableView, numberOfRowsInSection: Swift.Int) -&gt; Swift.Int"
-                  moduleName = "FetchTestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sargashkaeva/Desktop/FetchTestAssignment/FetchTestAssignment/Core/DessertDetail/DessertDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "46">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

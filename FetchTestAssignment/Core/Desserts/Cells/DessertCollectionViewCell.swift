@@ -7,34 +7,37 @@
 
 import UIKit
 
-class DessertCollectionViewCell: UICollectionViewCell {
+final class DessertCollectionViewCell: UICollectionViewCell {
     
     //MARK: Properties
     static let identifier = "DessertCollectionViewCell"
-    private var isFavorite: Bool = false
+    private var heartIcon: UIImage = UIImage.FavoriteButton.emptyHeart
+    private let configuration = UIImage.SymbolConfiguration(pointSize: 23)
+    private lazy var isFavorite: Bool = false {
+        didSet {
+            heartIcon = isFavorite ? UIImage.FavoriteButton.heart.withConfiguration(configuration) : UIImage.FavoriteButton.emptyHeart.withConfiguration(configuration)
+        }
+    }
+  
     
     //MARK: Views
     private lazy var dessertImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "placeholder")
+        imageView.image = UIImage.DessertsView.pizza
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var dessertNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var dessertNameLabel: CustomLabel = {
+        let label = CustomLabel(frame: .zero, fontSize: 16, fontWeight: .semibold)
         return label
     }()
     
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        let heartImage = UIImage(systemName: "heart")?.withTintColor(.brown).withRenderingMode(.alwaysOriginal)
-        button.setImage(heartImage?.withTintColor(.red).withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(UIImage.FavoriteButton.emptyHeart.withConfiguration(configuration), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -67,16 +70,15 @@ class DessertCollectionViewCell: UICollectionViewCell {
    
    @objc private func favButtonTapped() {
        isFavorite.toggle()
-       let checkMarkImage = isFavorite ? UIImage(systemName: "heart.fill")?.withTintColor(.red).withRenderingMode(.alwaysOriginal) : UIImage(systemName: "heart")?.withTintColor(.red).withRenderingMode(.alwaysOriginal)
-       favoriteButton.setImage(checkMarkImage?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 18)), for: .normal)
+       favoriteButton.setImage(heartIcon, for: .normal)
     }
     
     //MARK: ConfigureCell
-    func configure(with model: Meals) {
+    func configure(with model: Meal) {
         self.dessertNameLabel.text = model.strMeal
         guard let imageURLString = model.strMealThumb else { return }
         if let imageURL = URL(string: imageURLString) {
-            self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
+            self.dessertImageView.load(url: imageURL, placeholder: UIImage.DessertsView.placeholderImage)
         }
     }
 }
@@ -92,12 +94,10 @@ extension DessertCollectionViewCell {
             
             dessertNameLabel.topAnchor.constraint(equalTo: dessertImageView.bottomAnchor, constant: 8),
             dessertNameLabel.leadingAnchor.constraint(equalTo: dessertImageView.leadingAnchor),
-            dessertNameLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -10),
+            dessertNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
             
             favoriteButton.centerYAnchor.constraint(equalTo: dessertNameLabel.centerYAnchor),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 20),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 20)
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
         ]
         NSLayoutConstraint.activate(constraints)
     }

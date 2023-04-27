@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SegmentCollectionViewCell: UICollectionViewCell {
+final class SegmentCollectionViewCell: UICollectionViewCell {
     
     //MARK: Properties
     static let identifier = "SegmentCollectionViewCell"
@@ -29,11 +29,8 @@ class SegmentCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Views
-    private lazy var typeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Ingredients"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var typeLabel: CustomLabel = {
+        let label = CustomLabel(frame: .zero, fontSize: 14, fontWeight: .bold)
         return label
     }()
     
@@ -59,7 +56,6 @@ class SegmentCollectionViewCell: UICollectionViewCell {
             undelineView.trailingAnchor.constraint(equalTo: typeLabel.trailingAnchor),
             undelineView.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 3),
             undelineView.heightAnchor.constraint(equalToConstant: 2)
-            
         ]
         NSLayoutConstraint.activate(constraints)
     }
