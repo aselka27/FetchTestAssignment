@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		34A763D129F9DC0D00AB3FD4 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D029F9DC0D00AB3FD4 /* UIImage+Extension.swift */; };
+		34A763D429F9E30200AB3FD4 /* DessertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D329F9E30200AB3FD4 /* DessertDetailViewController.swift */; };
+		34A763D629F9E58B00AB3FD4 /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */; };
+		34A763D829F9F95800AB3FD4 /* SegmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */; };
+		34A763DA29FA009D00AB3FD4 /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A763D929FA009D00AB3FD4 /* MealDetail.swift */; };
 		34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FC29F9B0F800060FD7 /* AppDelegate.swift */; };
 		34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */; };
 		34B3650129F9B0F800060FD7 /* DessertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3650029F9B0F800060FD7 /* DessertsViewController.swift */; };
@@ -29,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		34A763D029F9DC0D00AB3FD4 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		34A763D329F9E30200AB3FD4 /* DessertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailViewController.swift; sourceTree = "<group>"; };
+		34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
+		34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		34A763D929FA009D00AB3FD4 /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
 		34B364F929F9B0F800060FD7 /* FetchTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B364FC29F9B0F800060FD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34B364FE29F9B0F800060FD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34A763D229F9E2E400AB3FD4 /* DessertDetail */ = {
+			isa = PBXGroup;
+			children = (
+				34A763D329F9E30200AB3FD4 /* DessertDetailViewController.swift */,
+				34A763D529F9E58B00AB3FD4 /* DessertDetailView.swift */,
+				34A763D729F9F95800AB3FD4 /* SegmentCollectionViewCell.swift */,
+			);
+			path = DessertDetail;
+			sourceTree = "<group>";
+		};
 		34B364F029F9B0F800060FD7 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +161,7 @@
 			children = (
 				34B3651E29F9BBA100060FD7 /* MealCategory.swift */,
 				34B3653129F9D36C00060FD7 /* Meals .swift */,
+				34A763D929FA009D00AB3FD4 /* MealDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +179,7 @@
 		34B3652529F9C3A000060FD7 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				34A763D229F9E2E400AB3FD4 /* DessertDetail */,
 				34B3652429F9C38600060FD7 /* Desserts */,
 			);
 			path = Core;
@@ -250,8 +270,11 @@
 				34B364FD29F9B0F800060FD7 /* AppDelegate.swift in Sources */,
 				34B3651F29F9BBA100060FD7 /* MealCategory.swift in Sources */,
 				34B3653029F9D29F00060FD7 /* DessertsViewViewModel.swift in Sources */,
+				34A763D429F9E30200AB3FD4 /* DessertDetailViewController.swift in Sources */,
+				34A763D829F9F95800AB3FD4 /* SegmentCollectionViewCell.swift in Sources */,
 				34B3651929F9B51E00060FD7 /* HttpHeader.swift in Sources */,
 				34B3652A29F9C51200060FD7 /* NSObject+Extension .swift in Sources */,
+				34A763D629F9E58B00AB3FD4 /* DessertDetailView.swift in Sources */,
 				34B3653229F9D36C00060FD7 /* Meals .swift in Sources */,
 				34B3652129F9BD8200060FD7 /* NetworkService.swift in Sources */,
 				34B3651C29F9BADE00060FD7 /* MealsRouter.swift in Sources */,
@@ -259,6 +282,7 @@
 				34A763D129F9DC0D00AB3FD4 /* UIImage+Extension.swift in Sources */,
 				34B3652329F9BF2500060FD7 /* NetworkErrors.swift in Sources */,
 				34B364FF29F9B0F800060FD7 /* SceneDelegate.swift in Sources */,
+				34A763DA29FA009D00AB3FD4 /* MealDetail.swift in Sources */,
 				34B3651429F9B47100060FD7 /* BaseRouter.swift in Sources */,
 				34B3652729F9C4BD00060FD7 /* DessertCollectionViewCell.swift in Sources */,
 			);
