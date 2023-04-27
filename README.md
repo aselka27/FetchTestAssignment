@@ -1,5 +1,6 @@
 # FetchTestAssignment
 
+Simple App written in Swift with UIKit. Shows desserts and its recipes.
 
-https://user-images.githubusercontent.com/90374492/234777274-76139f6f-3d64-4e83-8a77-b0f2267f992e.mp4
+https://user-images.githubusercontent.com/90374492/234778479-9e89f348-82f3-4cc6-9c19-6a34c6a6ba9a.mp4
 
