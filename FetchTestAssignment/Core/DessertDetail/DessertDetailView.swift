@@ -66,7 +66,6 @@ class DessertDetailView: UIView {
     
     lazy var directionsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         label.numberOfLines = 0
@@ -110,14 +109,14 @@ class DessertDetailView: UIView {
         self.categoryLabel.text = model.strCategory
         self.dessertNameLabel.text = model.strMeal
         self.dessertRegion.text = model.strArea
+        self.directionsLabel.text = model.strInstructions
         guard let imageURLString = model.strMealThumb else { return }
         if let imageURL = URL(string: imageURLString) {
             self.dessertImageView.load(url: imageURL, placeholder: UIImage(named: "placeholder"))
         }
-        directionsLabel.text = model.strInstructions
+       
     }
 }
-
 
 extension DessertDetailView {
     private func setupConstraints() {
@@ -137,11 +136,12 @@ extension DessertDetailView {
             directionsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             directionsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             directionsLabel.topAnchor.constraint(equalTo: segmentCollectionView.bottomAnchor, constant: 15),
-            directionsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
+            directionsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
             ingredientsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             ingredientsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             ingredientsTableView.topAnchor.constraint(equalTo: segmentCollectionView.bottomAnchor, constant: 15),
-            ingredientsTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50)
+            ingredientsTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6)
+            
         ]
         NSLayoutConstraint.activate(constraints)
     }

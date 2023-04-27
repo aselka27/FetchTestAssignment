@@ -65,6 +65,7 @@ class DessertDetailViewController: UIViewController {
     }
     
     private func setupConstraints() {
+        scrollView.contentSize = dessertView.frame.size
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -83,12 +84,12 @@ class DessertDetailViewController: UIViewController {
    //MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
 extension DessertDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return Types.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SegmentCollectionViewCell.identifier, for: indexPath) as? SegmentCollectionViewCell else { return UICollectionViewCell() }
-        let types = ["Ingredients", "Directions"]
+        let types = Types.allCases
         cell.configure(segmentType: types[indexPath.item])
         return cell
     }

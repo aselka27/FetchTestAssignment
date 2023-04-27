@@ -11,3 +11,8 @@ import Foundation
 enum MealCategory: String {
     case Dessert 
 }
+
+enum Types: String, CaseIterable {
+    case Ingredients
+    case Directions 
+}

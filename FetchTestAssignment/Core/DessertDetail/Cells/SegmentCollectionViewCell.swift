@@ -65,7 +65,7 @@ class SegmentCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: ConfigureCell
-     func configure(segmentType: String) {
-        self.typeLabel.text = segmentType
+     func configure(segmentType: Types) {
+         self.typeLabel.text = segmentType.rawValue
     }
 }
