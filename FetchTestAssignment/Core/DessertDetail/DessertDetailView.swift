@@ -39,7 +39,7 @@ final class DessertDetailView: UIView {
         return label
     }()
     
-    private var categoryLabel: CustomLabel = {
+    private lazy var categoryLabel: CustomLabel = {
         let label = CustomLabel(frame: .zero, fontSize: 13, fontWeight: .light)
         return label
     }()

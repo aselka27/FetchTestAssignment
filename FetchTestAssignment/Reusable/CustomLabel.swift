@@ -9,9 +9,9 @@ import UIKit
 
   class CustomLabel: UILabel {
       //MARK: Properties
-      let fontSize: CGFloat
-      let fontWeight: UIFont.Weight
-      var color: UIColor 
+     private let fontSize: CGFloat
+     private let fontWeight: UIFont.Weight
+     private var color: UIColor 
     
       //MARK: Init
       init(frame: CGRect, fontSize: CGFloat, fontWeight: UIFont.Weight, color: UIColor = .black) {
