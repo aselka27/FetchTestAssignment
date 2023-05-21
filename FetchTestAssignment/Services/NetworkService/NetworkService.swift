@@ -8,7 +8,21 @@
 import Foundation
 
 
-final class NetworkService {
+
+protocol NetworkServiceProtocol {
+    func performFetch<T: Decodable>(urlRequest: URLRequest) async throws -> T
+}
+
+
+class MockNetworkService: NetworkServiceProtocol {
+    lazy var meal = Meal(strMeal: "cake", strMealThumb: "", idMeal: "1")
+    lazy var mockMealsResponse: MealsResponse = MealsResponse(meals: Array(repeating: meal, count: 10))
+    func performFetch<T>(urlRequest: URLRequest) async throws -> T where T : Decodable {
+        return mockMealsResponse as! T
+    }
+}
+
+final class NetworkService: NetworkServiceProtocol {
     
     static let shared = NetworkService()
     
@@ -27,8 +41,19 @@ final class NetworkService {
                mainQueue.async {
                     completion(.success(successModel))
                 }
+            } else {
+                completion(.failure(NetworkError.decodingError))
             }
         }.resume()
+    }
+    
+    func performFetch<T: Decodable>(urlRequest: URLRequest) async throws -> T {
+        try await withCheckedThrowingContinuation { continuation in
+            self.performFetch(urlRequest: urlRequest, decodedModel: T.self) { result in
+                continuation.resume(with: result)
+            }
+        }
+       
     }
 }
 
@@ -43,6 +68,20 @@ extension NetworkService {
             return decodedData
         } catch {
             print("Error decoding data: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    private func validateError(_ response: URLResponse?) -> Error? {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return URLError(.badServerResponse)
+        }
+        switch httpResponse.statusCode {
+        case 200...210:
+            return nil
+        case 400:
+            return NetworkError.badRequest
+        default:
             return nil
         }
     }

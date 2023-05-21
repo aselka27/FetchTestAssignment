@@ -13,4 +13,5 @@ enum NetworkError: Error {
     case unauthorized
     case forbidden
     case decodingError
+    case badRequest
 }

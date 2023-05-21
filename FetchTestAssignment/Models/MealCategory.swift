@@ -9,7 +9,7 @@ import Foundation
 
 
 enum MealCategory: String {
-    case Dessert 
+    case Dessert
 }
 
 enum Types: String, CaseIterable {

@@ -17,7 +17,7 @@ protocol DessertViewViewModelImpl: AnyObject {
 
 final class DessertViewViewModel: DessertViewViewModelImpl {
    
-   private let networkService = NetworkService.shared
+     var networkService: any NetworkServiceProtocol = NetworkService.shared
     var allDesserts: [Meal]? {
         didSet {
             allDesserts?.sort { $0 < $1 }
@@ -25,13 +25,23 @@ final class DessertViewViewModel: DessertViewViewModelImpl {
     }
     
     func getDessert(completion: @escaping emptyCompletion) {
-        networkService.performFetch(urlRequest: MealsRouter.getDesserts(category: .Dessert).createURLRequest(), decodedModel: MealsResponse.self) { [weak self] result in
-            switch result {
-            case .success(let decodeModel):
-                self?.allDesserts = decodeModel.meals
+//        networkService.performFetch(urlRequest: MealsRouter.getDesserts(category: .Dessert).createURLRequest(), decodedModel: MealsResponse.self) { [weak self] result in
+//            switch result {
+//            case .success(let decodeModel):
+//                self?.allDesserts = decodeModel.meals
+//                completion()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+        Task { @MainActor in
+            do {
+                let mealsResponse: MealsResponse = try await networkService.performFetch(urlRequest: MealsRouter.getDesserts(category: .Dessert).createURLRequest())
+                allDesserts = mealsResponse.meals
                 completion()
-            case .failure(let error):
+            } catch {
                 print(error.localizedDescription)
+                completion()
             }
         }
     }
